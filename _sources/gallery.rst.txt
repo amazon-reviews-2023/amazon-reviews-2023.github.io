@@ -1,0 +1,50 @@
+===================
+Common Data Usage 
+===================
+
+.. note::
+
+    For inspirations and encouraging benchmarking, we've curated a collection of works using Amazon Reivews data (including the previous versions).  
+    Welcome to share your related papers via issues on our GitHub for more exposure!
+
+1. Recommender Systems
+
+.. grid:: 2
+    
+    .. grid-item-card:: Self-Attentive Sequential Recommendation
+        :link: https://arxiv.org/abs/1808.09781
+
+        UC San Diego
+
+        +++
+        *Usage: evaluating sequential recommender systems.*
+
+2. Natural Language Processing
+
+.. grid:: 2
+
+    .. grid-item-card:: Learning to Generate Reviews and Discovering Sentiment
+        :link: https://arxiv.org/abs/1704.01444
+
+        OpenAI
+
+        +++
+        *Usage: exploring sentiment-analysis with unsupervised learning.*
+
+    .. grid-item-card:: Don't Stop Pretraining: Adapt Language Models to Domains and Tasks
+        :link: https://arxiv.org/abs/2004.10964
+
+        AI2, UW
+
+        +++
+        *Usage: evaluating domain-adaptive pretraining.*
+
+3. Graph Learning
+
+
+.. grid:: 2
+
+    .. grid-item-card:: Diffusion Improves Graph Learning
+        :link: https://arxiv.org/abs/1911.05485
+
+        TUM

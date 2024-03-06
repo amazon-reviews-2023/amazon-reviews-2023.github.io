@@ -1,0 +1,10 @@
+# Common Data Loading
+
+We offer code examples demonstrating how to load Amazon Review'23 data using native `json` and the third-party huggingface `datasets` toolkit.
+
+```{toctree}
+:maxdepth: 1
+
+jsonl
+huggingface
+```

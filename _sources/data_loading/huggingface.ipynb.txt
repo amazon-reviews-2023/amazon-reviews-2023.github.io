@@ -1,0 +1,855 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Via Huggingface `datasets`"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Define a \"pretty print\" function `pprint` for dict objects and dataframes."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import json \n",
+    "pprint = lambda x: print(json.dumps(x, indent=2)) if isinstance(x, dict) else display(x)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Ignore some unnecessary outputs from huggingface datasets"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import datasets \n",
+    "datasets.logging.set_verbosity_error()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Load Review Samples"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "application/vnd.jupyter.widget-view+json": {
+       "model_id": "7b4d873c67704216adf478fde6f6a25c",
+       "version_major": 2,
+       "version_minor": 0
+      },
+      "text/plain": [
+       "  0%|          | 0/1 [00:00<?, ?it/s]"
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    }
+   ],
+   "source": [
+    "from datasets import load_dataset\n",
+    "\n",
+    "dataset = load_dataset(\"McAuley-Lab/Amazon-Review-2023\", \"raw_review_All_Beauty\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "{'rating': 5.0,\n",
+       " 'title': 'Such a lovely scent but not overpowering.',\n",
+       " 'text': \"This spray is really nice. It smells really good, goes on really fine, and does the trick. I will say it feels like you need a lot of it though to get the texture I want. I have a lot of hair, medium thickness. I am comparing to other brands with yucky chemicals so I'm gonna stick with this. Try it!\",\n",
+       " 'images': [],\n",
+       " 'asin': 'B00YQ6X8EO',\n",
+       " 'parent_asin': 'B00YQ6X8EO',\n",
+       " 'user_id': 'AGKHLEW2SOWHNMFQIJGBECAF7INQ',\n",
+       " 'timestamp': 1588687728923,\n",
+       " 'helpful_vote': 0,\n",
+       " 'verified_purchase': True}"
+      ]
+     },
+     "execution_count": 9,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "dataset[\"full\"][0]"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Load Item Metadata"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "Found cached dataset amazon-review-2023 (/Users/zhankui/.cache/huggingface/datasets/McAuley-Lab___amazon-review-2023/raw_meta_All_Beauty/0.0.0/16b76e0823d73bb8cff1e9c5e3e37dbc46ae3daee380417ae141f5e67d3ea8e8)\n"
+     ]
+    }
+   ],
+   "source": [
+    "dataset = load_dataset(\"McAuley-Lab/Amazon-Review-2023\", \"raw_meta_All_Beauty\", split=\"full\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 14,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "{'main_category': 'All Beauty',\n",
+       " 'title': 'Howard LC0008 Leather Conditioner, 8-Ounce (4-Pack)',\n",
+       " 'average_rating': 4.8,\n",
+       " 'rating_number': 10,\n",
+       " 'features': [],\n",
+       " 'description': [],\n",
+       " 'price': 'None',\n",
+       " 'images': {'hi_res': [None,\n",
+       "   'https://m.media-amazon.com/images/I/71i77AuI9xL._SL1500_.jpg'],\n",
+       "  'large': ['https://m.media-amazon.com/images/I/41qfjSfqNyL.jpg',\n",
+       "   'https://m.media-amazon.com/images/I/41w2yznfuZL.jpg'],\n",
+       "  'thumb': ['https://m.media-amazon.com/images/I/41qfjSfqNyL._SS40_.jpg',\n",
+       "   'https://m.media-amazon.com/images/I/41w2yznfuZL._SS40_.jpg'],\n",
+       "  'variant': ['MAIN', 'PT01']},\n",
+       " 'videos': {'title': [], 'url': [], 'user_id': []},\n",
+       " 'store': 'Howard Products',\n",
+       " 'categories': [],\n",
+       " 'details': '{\"Package Dimensions\": \"7.1 x 5.5 x 3 inches; 2.38 Pounds\", \"UPC\": \"617390882781\"}',\n",
+       " 'parent_asin': 'B01CUPMQZE',\n",
+       " 'bought_together': None,\n",
+       " 'subtitle': None,\n",
+       " 'author': None}"
+      ]
+     },
+     "execution_count": 14,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "dataset[0]"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Load Pure IDs Files (Before Splitting)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 16,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Downloading and preparing dataset amazon-review-2023/0core_rating_only_All_Beauty to /Users/zhankui/.cache/huggingface/datasets/McAuley-Lab___amazon-review-2023/0core_rating_only_All_Beauty/0.0.0/16b76e0823d73bb8cff1e9c5e3e37dbc46ae3daee380417ae141f5e67d3ea8e8...\n"
+     ]
+    },
+    {
+     "data": {
+      "application/vnd.jupyter.widget-view+json": {
+       "model_id": "e376731e324f4c4d9f9754855c15be2a",
+       "version_major": 2,
+       "version_minor": 0
+      },
+      "text/plain": [
+       "Downloading data:   0%|          | 0.00/40.2M [00:00<?, ?B/s]"
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    },
+    {
+     "data": {
+      "application/vnd.jupyter.widget-view+json": {
+       "model_id": "1bc5ab2e957a4b8e8973d7a9a851e5e5",
+       "version_major": 2,
+       "version_minor": 0
+      },
+      "text/plain": [
+       "Generating full split: 0 examples [00:00, ? examples/s]"
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Dataset amazon-review-2023 downloaded and prepared to /Users/zhankui/.cache/huggingface/datasets/McAuley-Lab___amazon-review-2023/0core_rating_only_All_Beauty/0.0.0/16b76e0823d73bb8cff1e9c5e3e37dbc46ae3daee380417ae141f5e67d3ea8e8. Subsequent calls will reuse this data.\n"
+     ]
+    },
+    {
+     "data": {
+      "application/vnd.jupyter.widget-view+json": {
+       "model_id": "1aad153fc9494bd68a52ad5d69c6d294",
+       "version_major": 2,
+       "version_minor": 0
+      },
+      "text/plain": [
+       "  0%|          | 0/1 [00:00<?, ?it/s]"
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    }
+   ],
+   "source": [
+    "dataset = load_dataset(\"McAuley-Lab/Amazon-Review-2023\", \"0core_rating_only_All_Beauty\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 17,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "{\n",
+      "  \"user_id\": [\n",
+      "    \"AGKHLEW2SOWHNMFQIJGBECAF7INQ\",\n",
+      "    \"AGKHLEW2SOWHNMFQIJGBECAF7INQ\",\n",
+      "    \"AE74DYR3QUGVPZJ3P7RFWBGIX7XQ\",\n",
+      "    \"AFQLNQNQYFWQZPJQZS6V3NZU4QBQ\",\n",
+      "    \"AFQLNQNQYFWQZPJQZS6V3NZU4QBQ\"\n",
+      "  ],\n",
+      "  \"parent_asin\": [\n",
+      "    \"B081TJ8YS3\",\n",
+      "    \"B00YQ6X8EO\",\n",
+      "    \"B097R46CSY\",\n",
+      "    \"B08BZ63GMJ\",\n",
+      "    \"B09JS339BZ\"\n",
+      "  ],\n",
+      "  \"rating\": [\n",
+      "    \"4.0\",\n",
+      "    \"5.0\",\n",
+      "    \"5.0\",\n",
+      "    \"5.0\",\n",
+      "    \"1.0\"\n",
+      "  ],\n",
+      "  \"timestamp\": [\n",
+      "    \"1588615855070\",\n",
+      "    \"1588687728923\",\n",
+      "    \"1589665266052\",\n",
+      "    \"1609322563534\",\n",
+      "    \"1643393630220\"\n",
+      "  ]\n",
+      "}\n"
+     ]
+    }
+   ],
+   "source": [
+    "pprint(dataset['full'][0:5])"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Load Pure IDs Files (After Splitting)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 19,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Downloading and preparing dataset amazon-review-2023/0core_timestamp_All_Beauty to /Users/zhankui/.cache/huggingface/datasets/McAuley-Lab___amazon-review-2023/0core_timestamp_All_Beauty/0.0.0/16b76e0823d73bb8cff1e9c5e3e37dbc46ae3daee380417ae141f5e67d3ea8e8...\n"
+     ]
+    },
+    {
+     "data": {
+      "application/vnd.jupyter.widget-view+json": {
+       "model_id": "ae8527abdcb74e38b1cf175098c6a5aa",
+       "version_major": 2,
+       "version_minor": 0
+      },
+      "text/plain": [
+       "Downloading data files:   0%|          | 0/3 [00:00<?, ?it/s]"
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    },
+    {
+     "data": {
+      "application/vnd.jupyter.widget-view+json": {
+       "model_id": "ffd305c6471641f4bf58abc41ce55378",
+       "version_major": 2,
+       "version_minor": 0
+      },
+      "text/plain": [
+       "Downloading data:   0%|          | 0.00/33.8M [00:00<?, ?B/s]"
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    },
+    {
+     "data": {
+      "application/vnd.jupyter.widget-view+json": {
+       "model_id": "9ab4fcb4960c47809bf014fdab0f8f9f",
+       "version_major": 2,
+       "version_minor": 0
+      },
+      "text/plain": [
+       "Downloading data:   0%|          | 0.00/4.16M [00:00<?, ?B/s]"
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    },
+    {
+     "data": {
+      "application/vnd.jupyter.widget-view+json": {
+       "model_id": "c456d574fe50401888090563e75ded00",
+       "version_major": 2,
+       "version_minor": 0
+      },
+      "text/plain": [
+       "Downloading data:   0%|          | 0.00/2.26M [00:00<?, ?B/s]"
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    },
+    {
+     "data": {
+      "application/vnd.jupyter.widget-view+json": {
+       "model_id": "7b72690fe0c8458b88546b49819dcf60",
+       "version_major": 2,
+       "version_minor": 0
+      },
+      "text/plain": [
+       "Extracting data files:   0%|          | 0/3 [00:00<?, ?it/s]"
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    },
+    {
+     "data": {
+      "application/vnd.jupyter.widget-view+json": {
+       "model_id": "4738177da6934744bab78ef690777a6c",
+       "version_major": 2,
+       "version_minor": 0
+      },
+      "text/plain": [
+       "Generating train split: 0 examples [00:00, ? examples/s]"
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    },
+    {
+     "data": {
+      "application/vnd.jupyter.widget-view+json": {
+       "model_id": "fe35e491d64c4933b3e5fa62f8f2367a",
+       "version_major": 2,
+       "version_minor": 0
+      },
+      "text/plain": [
+       "Generating valid split: 0 examples [00:00, ? examples/s]"
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    },
+    {
+     "data": {
+      "application/vnd.jupyter.widget-view+json": {
+       "model_id": "c8b6166776a84d3da558b9a84511aebf",
+       "version_major": 2,
+       "version_minor": 0
+      },
+      "text/plain": [
+       "Generating test split: 0 examples [00:00, ? examples/s]"
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Dataset amazon-review-2023 downloaded and prepared to /Users/zhankui/.cache/huggingface/datasets/McAuley-Lab___amazon-review-2023/0core_timestamp_All_Beauty/0.0.0/16b76e0823d73bb8cff1e9c5e3e37dbc46ae3daee380417ae141f5e67d3ea8e8. Subsequent calls will reuse this data.\n"
+     ]
+    },
+    {
+     "data": {
+      "application/vnd.jupyter.widget-view+json": {
+       "model_id": "65f5b0470c4c4bcab90bbe51c29c3805",
+       "version_major": 2,
+       "version_minor": 0
+      },
+      "text/plain": [
+       "  0%|          | 0/3 [00:00<?, ?it/s]"
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    }
+   ],
+   "source": [
+    "dataset = load_dataset(\"McAuley-Lab/Amazon-Review-2023\", \"0core_timestamp_All_Beauty\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Only need (user, item) interactions:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 20,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "{'user_id': ['AGKHLEW2SOWHNMFQIJGBECAF7INQ',\n",
+       "  'AGKHLEW2SOWHNMFQIJGBECAF7INQ',\n",
+       "  'AE74DYR3QUGVPZJ3P7RFWBGIX7XQ',\n",
+       "  'AFQLNQNQYFWQZPJQZS6V3NZU4QBQ',\n",
+       "  'AGMJ3EMDVL6OWBJF7CA5RGJLXN5A'],\n",
+       " 'parent_asin': ['B081TJ8YS3',\n",
+       "  'B00YQ6X8EO',\n",
+       "  'B097R46CSY',\n",
+       "  'B08BZ63GMJ',\n",
+       "  'B00R8DXL44'],\n",
+       " 'rating': ['4.0', '5.0', '5.0', '5.0', '4.0'],\n",
+       " 'timestamp': ['1588615855070',\n",
+       "  '1588687728923',\n",
+       "  '1589665266052',\n",
+       "  '1609322563534',\n",
+       "  '1598567408138']}"
+      ]
+     },
+     "execution_count": 20,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "dataset['train'][:5]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 21,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "{'user_id': ['AFQLNQNQYFWQZPJQZS6V3NZU4QBQ',\n",
+       "  'AHREXOGQPZDA6354MHH4ETSF3MCQ',\n",
+       "  'AEYORY2AVPMCPDV57CE337YU5LXA',\n",
+       "  'AFETVW7S5M4LVJ7GTWPCKT7S3YBQ',\n",
+       "  'AGVVUU3QRQBHNASSGI5YQLPYOI2Q'],\n",
+       " 'parent_asin': ['B09JS339BZ',\n",
+       "  'B099DRHW5V',\n",
+       "  'B08BBQ29N5',\n",
+       "  'B01M5KNSQN',\n",
+       "  'B09FF97RHL'],\n",
+       " 'rating': ['1.0', '5.0', '3.0', '1.0', '1.0'],\n",
+       " 'timestamp': ['1643393630220',\n",
+       "  '1631885519443',\n",
+       "  '1634275259292',\n",
+       "  '1649634131604',\n",
+       "  '1648824907536']}"
+      ]
+     },
+     "execution_count": 21,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "dataset['valid'][:5]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 22,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "{'user_id': ['AFZUK3MTBIBEDQOPAK3OATUOUKLA',\n",
+       "  'AHV6QCNBJNSGLATP56JAWJ3C4G2A',\n",
+       "  'AHV6QCNBJNSGLATP56JAWJ3C4G2A',\n",
+       "  'AHV6QCNBJNSGLATP56JAWJ3C4G2A',\n",
+       "  'AEZ26WGWJ3EOQ4KWSHG77HJAG4EA'],\n",
+       " 'parent_asin': ['B0BFR5WF1R',\n",
+       "  'B0B4JPGX8P',\n",
+       "  'B0B4JP5YD9',\n",
+       "  'B0B8DZ7H5F',\n",
+       "  'B0B7RBK4NJ'],\n",
+       " 'rating': ['1.0', '4.0', '5.0', '4.0', '1.0'],\n",
+       " 'timestamp': ['1675826333052',\n",
+       "  '1660417672640',\n",
+       "  '1660417831321',\n",
+       "  '1663163956007',\n",
+       "  '1662827578220']}"
+      ]
+     },
+     "execution_count": 22,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "dataset['test'][:5]"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Need additional user historical interactions:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 24,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Downloading and preparing dataset amazon-review-2023/0core_timestamp_w_his_All_Beauty to /Users/zhankui/.cache/huggingface/datasets/McAuley-Lab___amazon-review-2023/0core_timestamp_w_his_All_Beauty/0.0.0/16b76e0823d73bb8cff1e9c5e3e37dbc46ae3daee380417ae141f5e67d3ea8e8...\n"
+     ]
+    },
+    {
+     "data": {
+      "application/vnd.jupyter.widget-view+json": {
+       "model_id": "9632d68394b84cabadfbd7944580f3e6",
+       "version_major": 2,
+       "version_minor": 0
+      },
+      "text/plain": [
+       "Downloading data files:   0%|          | 0/3 [00:00<?, ?it/s]"
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    },
+    {
+     "data": {
+      "application/vnd.jupyter.widget-view+json": {
+       "model_id": "845abe2a0ea54973852be27372f60b9d",
+       "version_major": 2,
+       "version_minor": 0
+      },
+      "text/plain": [
+       "Downloading data:   0%|          | 0.00/35.9M [00:00<?, ?B/s]"
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    },
+    {
+     "data": {
+      "application/vnd.jupyter.widget-view+json": {
+       "model_id": "c36a0d79171c4067a04125baeb335dd9",
+       "version_major": 2,
+       "version_minor": 0
+      },
+      "text/plain": [
+       "Downloading data:   0%|          | 0.00/4.71M [00:00<?, ?B/s]"
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    },
+    {
+     "data": {
+      "application/vnd.jupyter.widget-view+json": {
+       "model_id": "cd71d4be8fa84a059cdd7b0d7ce39412",
+       "version_major": 2,
+       "version_minor": 0
+      },
+      "text/plain": [
+       "Downloading data:   0%|          | 0.00/2.48M [00:00<?, ?B/s]"
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    },
+    {
+     "data": {
+      "application/vnd.jupyter.widget-view+json": {
+       "model_id": "55ad5a20bf364efdb20013405e37fd0e",
+       "version_major": 2,
+       "version_minor": 0
+      },
+      "text/plain": [
+       "Extracting data files:   0%|          | 0/3 [00:00<?, ?it/s]"
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    },
+    {
+     "data": {
+      "application/vnd.jupyter.widget-view+json": {
+       "model_id": "91586cd93fca46ca8029858186ee8782",
+       "version_major": 2,
+       "version_minor": 0
+      },
+      "text/plain": [
+       "Generating train split: 0 examples [00:00, ? examples/s]"
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    },
+    {
+     "data": {
+      "application/vnd.jupyter.widget-view+json": {
+       "model_id": "af74b464fe3945398958c6f708ea8b8a",
+       "version_major": 2,
+       "version_minor": 0
+      },
+      "text/plain": [
+       "Generating valid split: 0 examples [00:00, ? examples/s]"
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    },
+    {
+     "data": {
+      "application/vnd.jupyter.widget-view+json": {
+       "model_id": "0c713522c2954b349463a281ee67a0e8",
+       "version_major": 2,
+       "version_minor": 0
+      },
+      "text/plain": [
+       "Generating test split: 0 examples [00:00, ? examples/s]"
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Dataset amazon-review-2023 downloaded and prepared to /Users/zhankui/.cache/huggingface/datasets/McAuley-Lab___amazon-review-2023/0core_timestamp_w_his_All_Beauty/0.0.0/16b76e0823d73bb8cff1e9c5e3e37dbc46ae3daee380417ae141f5e67d3ea8e8. Subsequent calls will reuse this data.\n"
+     ]
+    },
+    {
+     "data": {
+      "application/vnd.jupyter.widget-view+json": {
+       "model_id": "5e2ce59b0e824ee481e5dc7bf9054454",
+       "version_major": 2,
+       "version_minor": 0
+      },
+      "text/plain": [
+       "  0%|          | 0/3 [00:00<?, ?it/s]"
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    }
+   ],
+   "source": [
+    "dataset = load_dataset(\"McAuley-Lab/Amazon-Review-2023\", \"0core_timestamp_w_his_All_Beauty\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 25,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "{'user_id': ['AGKHLEW2SOWHNMFQIJGBECAF7INQ',\n",
+       "  'AGKHLEW2SOWHNMFQIJGBECAF7INQ',\n",
+       "  'AE74DYR3QUGVPZJ3P7RFWBGIX7XQ',\n",
+       "  'AFQLNQNQYFWQZPJQZS6V3NZU4QBQ',\n",
+       "  'AGMJ3EMDVL6OWBJF7CA5RGJLXN5A'],\n",
+       " 'parent_asin': ['B081TJ8YS3',\n",
+       "  'B00YQ6X8EO',\n",
+       "  'B097R46CSY',\n",
+       "  'B08BZ63GMJ',\n",
+       "  'B00R8DXL44'],\n",
+       " 'rating': ['4.0', '5.0', '5.0', '5.0', '4.0'],\n",
+       " 'timestamp': ['1588615855070',\n",
+       "  '1588687728923',\n",
+       "  '1589665266052',\n",
+       "  '1609322563534',\n",
+       "  '1598567408138'],\n",
+       " 'history': ['', 'B081TJ8YS3', '', '', '']}"
+      ]
+     },
+     "execution_count": 25,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "dataset['train'][:5]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 26,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "{'user_id': ['AFQLNQNQYFWQZPJQZS6V3NZU4QBQ',\n",
+       "  'AHREXOGQPZDA6354MHH4ETSF3MCQ',\n",
+       "  'AEYORY2AVPMCPDV57CE337YU5LXA',\n",
+       "  'AFETVW7S5M4LVJ7GTWPCKT7S3YBQ',\n",
+       "  'AGVVUU3QRQBHNASSGI5YQLPYOI2Q'],\n",
+       " 'parent_asin': ['B09JS339BZ',\n",
+       "  'B099DRHW5V',\n",
+       "  'B08BBQ29N5',\n",
+       "  'B01M5KNSQN',\n",
+       "  'B09FF97RHL'],\n",
+       " 'rating': ['1.0', '5.0', '3.0', '1.0', '1.0'],\n",
+       " 'timestamp': ['1643393630220',\n",
+       "  '1631885519443',\n",
+       "  '1634275259292',\n",
+       "  '1649634131604',\n",
+       "  '1648824907536'],\n",
+       " 'history': ['B08BZ63GMJ', '', '', '', '']}"
+      ]
+     },
+     "execution_count": 26,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "dataset['valid'][:5]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 18,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "{'user_id': ['AFZUK3MTBIBEDQOPAK3OATUOUKLA',\n",
+       "  'AHV6QCNBJNSGLATP56JAWJ3C4G2A',\n",
+       "  'AHV6QCNBJNSGLATP56JAWJ3C4G2A',\n",
+       "  'AHV6QCNBJNSGLATP56JAWJ3C4G2A',\n",
+       "  'AEZ26WGWJ3EOQ4KWSHG77HJAG4EA'],\n",
+       " 'parent_asin': ['B0BFR5WF1R',\n",
+       "  'B0B4JPGX8P',\n",
+       "  'B0B4JP5YD9',\n",
+       "  'B0B8DZ7H5F',\n",
+       "  'B0B7RBK4NJ'],\n",
+       " 'rating': ['1.0', '4.0', '5.0', '4.0', '1.0'],\n",
+       " 'timestamp': ['1675826333052',\n",
+       "  '1660417672640',\n",
+       "  '1660417831321',\n",
+       "  '1663163956007',\n",
+       "  '1662827578220'],\n",
+       " 'history': ['B0020MKBNW B082FLP15V B00946HGLW',\n",
+       "  'B00N6WHTRG B00NNKWDI6 B00MDKICPK B010B0S67C B00KXFD75M B015ZXMSFQ B00KR4AFJU B01CO73OIQ B00GUTPV4A B01B6V11UY B01KJPFO9W B071R2QPF3 B07GDQPG12 B07KV31WDS B07FZ5HZLM B077YR3333 B07N45YN6C B07J2QZBTP B07NPWK167 B082MTTFZD B07JDD2L3M B07SW7D6ZR B07WNBZQGT B084D86YL8 B082NKQ4ZT B083TLNBJJ B07PRDZ2BH B087D7MVHB B088FBNQXW B085WTCBLG B085NYYLQ8 B08BZ1RHPS B08FRQGYDF B0B2L218H2 B08HXQ3T9K B08KWN77LW B08KYLTK5H B0BTJ6SYKB B07W6H8CGT B08PQ6YXSH B07KQ32Z8C B09KT4RJG6',\n",
+       "  'B00N6WHTRG B00NNKWDI6 B00MDKICPK B010B0S67C B00KXFD75M B015ZXMSFQ B00KR4AFJU B01CO73OIQ B00GUTPV4A B01B6V11UY B01KJPFO9W B071R2QPF3 B07GDQPG12 B07KV31WDS B07FZ5HZLM B077YR3333 B07N45YN6C B07J2QZBTP B07NPWK167 B082MTTFZD B07JDD2L3M B07SW7D6ZR B07WNBZQGT B084D86YL8 B082NKQ4ZT B083TLNBJJ B07PRDZ2BH B087D7MVHB B088FBNQXW B085WTCBLG B085NYYLQ8 B08BZ1RHPS B08FRQGYDF B0B2L218H2 B08HXQ3T9K B08KWN77LW B08KYLTK5H B0BTJ6SYKB B07W6H8CGT B08PQ6YXSH B07KQ32Z8C B09KT4RJG6 B0B4JPGX8P',\n",
+       "  'B00N6WHTRG B00NNKWDI6 B00MDKICPK B010B0S67C B00KXFD75M B015ZXMSFQ B00KR4AFJU B01CO73OIQ B00GUTPV4A B01B6V11UY B01KJPFO9W B071R2QPF3 B07GDQPG12 B07KV31WDS B07FZ5HZLM B077YR3333 B07N45YN6C B07J2QZBTP B07NPWK167 B082MTTFZD B07JDD2L3M B07SW7D6ZR B07WNBZQGT B084D86YL8 B082NKQ4ZT B083TLNBJJ B07PRDZ2BH B087D7MVHB B088FBNQXW B085WTCBLG B085NYYLQ8 B08BZ1RHPS B08FRQGYDF B0B2L218H2 B08HXQ3T9K B08KWN77LW B08KYLTK5H B0BTJ6SYKB B07W6H8CGT B08PQ6YXSH B07KQ32Z8C B09KT4RJG6 B0B4JPGX8P B0B4JP5YD9',\n",
+       "  '']}"
+      ]
+     },
+     "execution_count": 18,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "dataset['test'][:5]"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.8.8"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 2
+}
