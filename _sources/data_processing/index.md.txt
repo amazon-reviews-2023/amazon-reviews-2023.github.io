@@ -1,6 +1,6 @@
 # Common Data Processing
 
-We offer Amazon Review'23 data splits based on [k-core](https://en.wikipedia.org/wiki/Degeneracy_(graph_theory)) (k=0,5) processing.
+We offer Amazon Reviews'23 data splits based on [k-core](https://en.wikipedia.org/wiki/Degeneracy_(graph_theory)) (k=0,5) processing.
 
 ```{toctree}
 :maxdepth: 1
