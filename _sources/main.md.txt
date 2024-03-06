@@ -239,8 +239,6 @@ Check data loading examples and Huggingface datasets APIs in <b>[Common Data Loa
 
 ## Contact Us
 
-- **Share Your Work**: To share how you are using our data, please create an issue on [GitHub](https://),  it will be posted in our <b>[Gallery of Related Projects](https://)</b> for promotion.
+- **Report Bugs**: To report bugs in the dataset, please file an issue on our [GitHub](https://github.com/amazon-reviews-2023/amazon-reviews-2023.github.io/issues/new/choose).
 
-- **Report An Issue**: To report bugs in the dataset, please submit an issue on our [GitHub](https://).
-
-- **Others**: For research collaborations or other questions, please email our [team](https://).
+- **Others**: For research collaborations or other questions, please email **yphou AT ucsd.edu**.
