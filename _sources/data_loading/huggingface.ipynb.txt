@@ -11,23 +11,6 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "Define a \"pretty print\" function `pprint` for dict objects and dataframes."
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": 4,
-   "metadata": {},
-   "outputs": [],
-   "source": [
-    "import json \n",
-    "pprint = lambda x: print(json.dumps(x, indent=2)) if isinstance(x, dict) else display(x)"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "metadata": {},
-   "source": [
     "Ignore some unnecessary outputs from huggingface datasets"
    ]
   },
@@ -241,7 +224,7 @@
     }
    ],
    "source": [
-    "pprint(dataset['full'][0:5])"
+    "dataset['full'][0:5]"
    ]
   },
   {
