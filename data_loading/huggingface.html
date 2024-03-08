@@ -298,15 +298,7 @@
 <h2>Load Pure IDs Files (Before Splitting)<a class="headerlink" href="#load-pure-ids-files-before-splitting" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span> <span class="o">=</span> <span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;McAuley-Lab/Amazon-Reviews-2023&quot;</span><span class="p">,</span> <span class="s2">&quot;0core_rating_only_All_Beauty&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/yuh125/miniconda3/envs/dl/lib/python3.9/site-packages/datasets/load.py:1461: FutureWarning: The repository for McAuley-Lab/Amazon-Reviews-2023 contains custom code which must be executed to correctly load the dataset. You can inspect the repository content at https://hf.co/datasets/McAuley-Lab/Amazon-Reviews-2023
-You can avoid this message in future by passing the argument `trust_remote_code=True`.
-Passing `trust_remote_code=True` will be mandatory to load this dataset from the next major release of `datasets`.
-  warnings.warn(
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span> <span class="o">=</span> <span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;McAuley-Lab/Amazon-Reviews-2023&quot;</span><span class="p">,</span> <span class="s2">&quot;0core_rating_only_All_Beauty&quot;</span><span class="p">,</span> <span class="n">trust_remote_code</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -343,7 +335,7 @@ Passing `trust_remote_code=True` will be mandatory to load this dataset from the
 <h2>Load Pure IDs Files (After Splitting)<a class="headerlink" href="#load-pure-ids-files-after-splitting" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span> <span class="o">=</span> <span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;McAuley-Lab/Amazon-Reviews-2023&quot;</span><span class="p">,</span> <span class="s2">&quot;0core_timestamp_All_Beauty&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span> <span class="o">=</span> <span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;McAuley-Lab/Amazon-Reviews-2023&quot;</span><span class="p">,</span> <span class="s2">&quot;0core_timestamp_All_Beauty&quot;</span><span class="p">,</span> <span class="n">trust_remote_code</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -436,7 +428,7 @@ Passing `trust_remote_code=True` will be mandatory to load this dataset from the
 <h3>Need additional user historical interactions:<a class="headerlink" href="#need-additional-user-historical-interactions" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span> <span class="o">=</span> <span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;McAuley-Lab/Amazon-Reviews-2023&quot;</span><span class="p">,</span> <span class="s2">&quot;0core_timestamp_w_his_All_Beauty&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span> <span class="o">=</span> <span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;McAuley-Lab/Amazon-Reviews-2023&quot;</span><span class="p">,</span> <span class="s2">&quot;0core_timestamp_w_his_All_Beauty&quot;</span><span class="p">,</span> <span class="n">trust_remote_code</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>

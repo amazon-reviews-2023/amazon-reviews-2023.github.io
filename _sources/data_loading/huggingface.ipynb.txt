@@ -178,7 +178,7 @@
     }
    ],
    "source": [
-    "dataset = load_dataset(\"McAuley-Lab/Amazon-Reviews-2023\", \"0core_rating_only_All_Beauty\")"
+    "dataset = load_dataset(\"McAuley-Lab/Amazon-Reviews-2023\", \"0core_rating_only_All_Beauty\", trust_remote_code=True)"
    ]
   },
   {
@@ -253,7 +253,7 @@
     }
    ],
    "source": [
-    "dataset = load_dataset(\"McAuley-Lab/Amazon-Reviews-2023\", \"0core_timestamp_All_Beauty\")"
+    "dataset = load_dataset(\"McAuley-Lab/Amazon-Reviews-2023\", \"0core_timestamp_All_Beauty\", trust_remote_code=True)"
    ]
   },
   {
@@ -394,7 +394,7 @@
     }
    ],
    "source": [
-    "dataset = load_dataset(\"McAuley-Lab/Amazon-Reviews-2023\", \"0core_timestamp_w_his_All_Beauty\")"
+    "dataset = load_dataset(\"McAuley-Lab/Amazon-Reviews-2023\", \"0core_timestamp_w_his_All_Beauty\", trust_remote_code=True)"
    ]
   },
   {
