@@ -108,21 +108,21 @@ with open(file, 'r') as fp:
 ```text
 ......
 {
-  "sortTimestamp": 1634275259292,
+  "sort_timestamp": 1634275259292,
   "rating": 3.0,
-  "helpfulVotes": 0,
+  "helpful_votes": 0,
   "title": "Meh",
   "text": "These were lightweight and soft but much too small for my liking. I would have preferred two of these together to make one loc. For that reason I will not be repurchasing.",
   "images": [
     {
-      "smallImageUrl": "https://m.media-amazon.com/images/I/81FN4c0VHzL._SL256_.jpg",
-      "mediumImageUrl": "https://m.media-amazon.com/images/I/81FN4c0VHzL._SL800_.jpg",
-      "largeImageUrl": "https://m.media-amazon.com/images/I/81FN4c0VHzL._SL1600_.jpg",
-      "attachmentType": "IMAGE"
+      "small_image_url": "https://m.media-amazon.com/images/I/81FN4c0VHzL._SL256_.jpg",
+      "medium_image_url": "https://m.media-amazon.com/images/I/81FN4c0VHzL._SL800_.jpg",
+      "large_image_url": "https://m.media-amazon.com/images/I/81FN4c0VHzL._SL1600_.jpg",
+      "attachment_type": "IMAGE"
     }
   ],
   "asin": "B088SZDGXG",
-  "verifiedPurchase": true,
+  "verified_purchase": true,
   "parent_asin": "B08BBQ29N5",
   "user_id": "AEYORY2AVPMCPDV57CE337YU5LXA"
 }
@@ -165,13 +165,13 @@ with open(file, 'r') as fp:
   "price": 6.99,
   "images": [
     {
-      "hiRes": "https://m.media-amazon.com/images/I/41a1Sj7Q20L._SL1005_.jpg",
+      "hi_res": "https://m.media-amazon.com/images/I/41a1Sj7Q20L._SL1005_.jpg",
       "thumb": "https://m.media-amazon.com/images/I/31dlCd7tHSL._SS40_.jpg",
       "large": "https://m.media-amazon.com/images/I/31dlCd7tHSL.jpg",
       "variant": "MAIN"
     },
     {
-      "hiRes": "https://m.media-amazon.com/images/I/510BWq7O95L._SL1005_.jpg",
+      "hi_res": "https://m.media-amazon.com/images/I/510BWq7O95L._SL1005_.jpg",
       "thumb": "https://m.media-amazon.com/images/I/31sLajrdHOL._SS40_.jpg",
       "large": "https://m.media-amazon.com/images/I/31sLajrdHOL.jpg",
       "variant": "PT01"
@@ -179,7 +179,7 @@ with open(file, 'r') as fp:
     ......
   ],
   "videos": [],
-  "boughtTogether": null,
+  "bought_together": null,
   "store": "Lurrose",
   "categories": [],
   "details": {
