@@ -1,5 +1,7 @@
 # Introduction
 
+[[🤗 Huggingface Datasets](https://huggingface.co/datasets/McAuley-Lab/Amazon-Reviews-2023)] · [[📑 Paper](https://arxiv.org/abs/2403.03952)]
+
 This is a large-scale **Amazon Reviews** dataset, collected in **2023** by [McAuley Lab](https://cseweb.ucsd.edu/~jmcauley/), and it includes rich features such as:
 1. **User Reviews** (*ratings*, *text*, *helpfulness votes*, etc.);
 2. **Item Metadata** (*descriptions*, *price*, *raw image*, etc.);
