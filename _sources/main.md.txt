@@ -51,6 +51,10 @@ We count the number of items based on user reviews rather than item metadata fil
 
 ### Grouped by Category
 
+```{seealso}
+Check Pure ID files ("**ratings only**" files) and corresponding data splitting strategies in <b>[Common Data Processing](data_processing/index)</b> section.
+```
+
 | Category                 | #User   | #Item   | #Rating   | #R_Token | #M_Token | Download                     |
 | ------------------------ | ------: | ------: | --------: | -------: | -------: | ------------------------------: |
 | All_Beauty | 632.0K | 112.6K | 701.5K | 31.6M | 74.1M | <a href='https://datarepo.eng.ucsd.edu/mcauley_group/data/amazon_2023/raw/review_categories/All_Beauty.jsonl.gz' download> review</a>, <a href='https://datarepo.eng.ucsd.edu/mcauley_group/data/amazon_2023/raw/meta_categories/meta_All_Beauty.jsonl.gz' download> meta </a> |
@@ -87,11 +91,6 @@ We count the number of items based on user reviews rather than item metadata fil
 | Toys_and_Games | 8.1M | 890.7K | 16.3M | 707.9M | 848.3M | <a href='https://datarepo.eng.ucsd.edu/mcauley_group/data/amazon_2023/raw/review_categories/Toys_and_Games.jsonl.gz' download> review</a>, <a href='https://datarepo.eng.ucsd.edu/mcauley_group/data/amazon_2023/raw/meta_categories/meta_Toys_and_Games.jsonl.gz' download> meta </a> |
 | Video_Games | 2.8M | 137.2K | 4.6M | 347.9M | 137.3M | <a href='https://datarepo.eng.ucsd.edu/mcauley_group/data/amazon_2023/raw/review_categories/Video_Games.jsonl.gz' download> review</a>, <a href='https://datarepo.eng.ucsd.edu/mcauley_group/data/amazon_2023/raw/meta_categories/meta_Video_Games.jsonl.gz' download> meta </a> |
 | Unknown | 23.1M | 13.2M | 63.8M | 3.3B | 232.8M | <a href='https://datarepo.eng.ucsd.edu/mcauley_group/data/amazon_2023/raw/review_categories/Unknown.jsonl.gz' download> review</a>, <a href='https://datarepo.eng.ucsd.edu/mcauley_group/data/amazon_2023/raw/meta_categories/meta_Unknown.jsonl.gz' download> meta </a> |
-
-
-```{seealso}
-Check Pure ID files and corresponding data splitting strategies in <b>[Common Data Processing](data_processing/index)</b> section.
-```
 
 ## Quick Start
 
