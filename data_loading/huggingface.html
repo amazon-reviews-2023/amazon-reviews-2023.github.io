@@ -218,13 +218,8 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">datasets</span> 
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">datasets</span><span class="o">.</span><span class="n">logging</span><span class="o">.</span><span class="n">set_verbosity_error</span><span class="p">()</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;datasets&#39;
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/yupeng/miniconda3/envs/web/lib/python3.8/site-packages/tqdm/auto.py:21: TqdmWarning: IProgress not found. Please update jupyter and ipywidgets. See https://ipywidgets.readthedocs.io/en/stable/user_install.html
+  from .autonotebook import tqdm as notebook_tqdm
 </pre></div>
 </div>
 </div>
@@ -236,18 +231,6 @@
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datasets</span> <span class="kn">import</span> <span class="n">load_dataset</span>
 
 <span class="n">dataset</span> <span class="o">=</span> <span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;McAuley-Lab/Amazon-Reviews-2023&quot;</span><span class="p">,</span> <span class="s2">&quot;raw_review_All_Beauty&quot;</span><span class="p">,</span> <span class="n">trust_remote_code</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/yuh125/miniconda3/envs/dl/lib/python3.9/site-packages/datasets/load.py:1461: FutureWarning: The repository for McAuley-Lab/Amazon-Reviews-2023 contains custom code which must be executed to correctly load the dataset. You can inspect the repository content at https://hf.co/datasets/McAuley-Lab/Amazon-Reviews-2023
-You can avoid this message in future by passing the argument `trust_remote_code=True`.
-Passing `trust_remote_code=True` will be mandatory to load this dataset from the next major release of `datasets`.
-  warnings.warn(
-Downloading builder script: 100%|██████████| 39.6k/39.6k [00:00&lt;00:00, 15.8MB/s]
-Downloading readme: 100%|██████████| 85.0/85.0 [00:00&lt;00:00, 1.06MB/s]
-Downloading data: 100%|██████████| 327M/327M [00:30&lt;00:00, 10.6MB/s] 
-Generating full split: 701528 examples [00:04, 148029.54 examples/s]
 </pre></div>
 </div>
 </div>
@@ -279,16 +262,6 @@ Generating full split: 701528 examples [00:04, 148029.54 examples/s]
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span> <span class="o">=</span> <span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;McAuley-Lab/Amazon-Reviews-2023&quot;</span><span class="p">,</span> <span class="s2">&quot;raw_meta_All_Beauty&quot;</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="s2">&quot;full&quot;</span><span class="p">,</span> <span class="n">trust_remote_code</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/yuh125/miniconda3/envs/dl/lib/python3.9/site-packages/datasets/load.py:1461: FutureWarning: The repository for McAuley-Lab/Amazon-Reviews-2023 contains custom code which must be executed to correctly load the dataset. You can inspect the repository content at https://hf.co/datasets/McAuley-Lab/Amazon-Reviews-2023
-You can avoid this message in future by passing the argument `trust_remote_code=True`.
-Passing `trust_remote_code=True` will be mandatory to load this dataset from the next major release of `datasets`.
-  warnings.warn(
-Downloading data: 100%|██████████| 213M/213M [00:19&lt;00:00, 11.0MB/s] 
-Generating full split: 112590 examples [00:08, 13095.48 examples/s]
 </pre></div>
 </div>
 </div>
@@ -335,12 +308,6 @@ Generating full split: 112590 examples [00:08, 13095.48 examples/s]
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading data: 100%|██████████| 40.2M/40.2M [00:02&lt;00:00, 13.9MB/s]
-Generating full split: 693929 examples [00:01, 361944.68 examples/s]
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -349,36 +316,22 @@ Generating full split: 693929 examples [00:01, 361944.68 examples/s]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{
-  &quot;user_id&quot;: [
-    &quot;AGKHLEW2SOWHNMFQIJGBECAF7INQ&quot;,
-    &quot;AGKHLEW2SOWHNMFQIJGBECAF7INQ&quot;,
-    &quot;AE74DYR3QUGVPZJ3P7RFWBGIX7XQ&quot;,
-    &quot;AFQLNQNQYFWQZPJQZS6V3NZU4QBQ&quot;,
-    &quot;AFQLNQNQYFWQZPJQZS6V3NZU4QBQ&quot;
-  ],
-  &quot;parent_asin&quot;: [
-    &quot;B081TJ8YS3&quot;,
-    &quot;B00YQ6X8EO&quot;,
-    &quot;B097R46CSY&quot;,
-    &quot;B08BZ63GMJ&quot;,
-    &quot;B09JS339BZ&quot;
-  ],
-  &quot;rating&quot;: [
-    &quot;4.0&quot;,
-    &quot;5.0&quot;,
-    &quot;5.0&quot;,
-    &quot;5.0&quot;,
-    &quot;1.0&quot;
-  ],
-  &quot;timestamp&quot;: [
-    &quot;1588615855070&quot;,
-    &quot;1588687728923&quot;,
-    &quot;1589665266052&quot;,
-    &quot;1609322563534&quot;,
-    &quot;1643393630220&quot;
-  ]
-}
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;user_id&#39;: [&#39;AGKHLEW2SOWHNMFQIJGBECAF7INQ&#39;,
+  &#39;AGKHLEW2SOWHNMFQIJGBECAF7INQ&#39;,
+  &#39;AE74DYR3QUGVPZJ3P7RFWBGIX7XQ&#39;,
+  &#39;AFQLNQNQYFWQZPJQZS6V3NZU4QBQ&#39;,
+  &#39;AFQLNQNQYFWQZPJQZS6V3NZU4QBQ&#39;],
+ &#39;parent_asin&#39;: [&#39;B081TJ8YS3&#39;,
+  &#39;B00YQ6X8EO&#39;,
+  &#39;B097R46CSY&#39;,
+  &#39;B08BZ63GMJ&#39;,
+  &#39;B09JS339BZ&#39;],
+ &#39;rating&#39;: [&#39;4.0&#39;, &#39;5.0&#39;, &#39;5.0&#39;, &#39;5.0&#39;, &#39;1.0&#39;],
+ &#39;timestamp&#39;: [&#39;1588615855070&#39;,
+  &#39;1588687728923&#39;,
+  &#39;1589665266052&#39;,
+  &#39;1609322563534&#39;,
+  &#39;1643393630220&#39;]}
 </pre></div>
 </div>
 </div>
@@ -389,16 +342,6 @@ Generating full split: 693929 examples [00:01, 361944.68 examples/s]
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span> <span class="o">=</span> <span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;McAuley-Lab/Amazon-Reviews-2023&quot;</span><span class="p">,</span> <span class="s2">&quot;0core_timestamp_All_Beauty&quot;</span><span class="p">,</span> <span class="n">trust_remote_code</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading data: 100%|██████████| 33.8M/33.8M [00:02&lt;00:00, 15.4MB/s]
-Downloading data: 100%|██████████| 4.16M/4.16M [00:00&lt;00:00, 14.6MB/s]
-Downloading data: 100%|██████████| 2.26M/2.26M [00:00&lt;00:00, 13.4MB/s]
-Generating train split: 583190 examples [00:01, 355294.29 examples/s]
-Generating valid split: 71784 examples [00:00, 93691.27 examples/s]
-Generating test split: 38955 examples [00:00, 93479.84 examples/s]
 </pre></div>
 </div>
 </div>
@@ -492,16 +435,6 @@ Generating test split: 38955 examples [00:00, 93479.84 examples/s]
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span> <span class="o">=</span> <span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;McAuley-Lab/Amazon-Reviews-2023&quot;</span><span class="p">,</span> <span class="s2">&quot;0core_timestamp_w_his_All_Beauty&quot;</span><span class="p">,</span> <span class="n">trust_remote_code</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading data: 100%|██████████| 35.9M/35.9M [00:02&lt;00:00, 15.2MB/s]
-Downloading data: 100%|██████████| 4.71M/4.71M [00:00&lt;00:00, 14.8MB/s]
-Downloading data: 100%|██████████| 2.48M/2.48M [00:00&lt;00:00, 14.1MB/s]
-Generating train split: 583190 examples [00:01, 327193.87 examples/s]
-Generating valid split: 71784 examples [00:00, 78271.52 examples/s]
-Generating test split: 38955 examples [00:00, 76866.93 examples/s]
 </pre></div>
 </div>
 </div>
