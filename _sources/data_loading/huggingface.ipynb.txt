@@ -16,7 +16,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 2,
+   "execution_count": 1,
    "metadata": {},
    "outputs": [],
    "source": [
@@ -33,17 +33,9 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 3,
+   "execution_count": 2,
    "metadata": {},
-   "outputs": [
-    {
-     "name": "stderr",
-     "output_type": "stream",
-     "text": [
-      "Generating full split: 701528 examples [00:03, 195188.29 examples/s]\n"
-     ]
-    }
-   ],
+   "outputs": [],
    "source": [
     "from datasets import load_dataset\n",
     "\n",
@@ -52,7 +44,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 4,
+   "execution_count": 3,
    "metadata": {},
    "outputs": [
     {
@@ -70,7 +62,7 @@
        " 'verified_purchase': True}"
       ]
      },
-     "execution_count": 4,
+     "execution_count": 3,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -88,24 +80,16 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 5,
+   "execution_count": 4,
    "metadata": {},
-   "outputs": [
-    {
-     "name": "stderr",
-     "output_type": "stream",
-     "text": [
-      "Generating full split: 100%|██████████| 112590/112590 [00:06<00:00, 18147.54 examples/s]\n"
-     ]
-    }
-   ],
+   "outputs": [],
    "source": [
     "dataset = load_dataset(\"McAuley-Lab/Amazon-Reviews-2023\", \"raw_meta_All_Beauty\", split=\"full\", trust_remote_code=True)"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": 6,
+   "execution_count": 5,
    "metadata": {},
    "outputs": [
     {
@@ -135,7 +119,7 @@
        " 'author': None}"
       ]
      },
-     "execution_count": 6,
+     "execution_count": 5,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -153,24 +137,16 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 7,
+   "execution_count": 6,
    "metadata": {},
-   "outputs": [
-    {
-     "name": "stderr",
-     "output_type": "stream",
-     "text": [
-      "Generating full split: 693929 examples [00:01, 499096.60 examples/s]\n"
-     ]
-    }
-   ],
+   "outputs": [],
    "source": [
     "dataset = load_dataset(\"McAuley-Lab/Amazon-Reviews-2023\", \"0core_rating_only_All_Beauty\", trust_remote_code=True)"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": 8,
+   "execution_count": 7,
    "metadata": {},
    "outputs": [
     {
@@ -194,7 +170,7 @@
        "  '1643393630220']}"
       ]
      },
-     "execution_count": 8,
+     "execution_count": 7,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -212,19 +188,9 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 9,
+   "execution_count": 8,
    "metadata": {},
-   "outputs": [
-    {
-     "name": "stderr",
-     "output_type": "stream",
-     "text": [
-      "Generating train split: 583190 examples [00:01, 498287.75 examples/s]\n",
-      "Generating valid split: 71784 examples [00:00, 131022.83 examples/s]\n",
-      "Generating test split: 38955 examples [00:00, 135057.88 examples/s]\n"
-     ]
-    }
-   ],
+   "outputs": [],
    "source": [
     "dataset = load_dataset(\"McAuley-Lab/Amazon-Reviews-2023\", \"0core_timestamp_All_Beauty\", trust_remote_code=True)"
    ]
@@ -238,7 +204,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 10,
+   "execution_count": 9,
    "metadata": {},
    "outputs": [
     {
@@ -262,7 +228,7 @@
        "  '1598567408138']}"
       ]
      },
-     "execution_count": 10,
+     "execution_count": 9,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -273,7 +239,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 11,
+   "execution_count": 10,
    "metadata": {},
    "outputs": [
     {
@@ -297,7 +263,7 @@
        "  '1648824907536']}"
       ]
      },
-     "execution_count": 11,
+     "execution_count": 10,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -308,7 +274,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 12,
+   "execution_count": 11,
    "metadata": {},
    "outputs": [
     {
@@ -332,7 +298,7 @@
        "  '1662827578220']}"
       ]
      },
-     "execution_count": 12,
+     "execution_count": 11,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -350,26 +316,16 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 13,
+   "execution_count": 12,
    "metadata": {},
-   "outputs": [
-    {
-     "name": "stderr",
-     "output_type": "stream",
-     "text": [
-      "Generating train split: 583190 examples [00:01, 459531.08 examples/s]\n",
-      "Generating valid split: 71784 examples [00:00, 115363.13 examples/s]\n",
-      "Generating test split: 38955 examples [00:00, 115267.23 examples/s]\n"
-     ]
-    }
-   ],
+   "outputs": [],
    "source": [
     "dataset = load_dataset(\"McAuley-Lab/Amazon-Reviews-2023\", \"0core_timestamp_w_his_All_Beauty\", trust_remote_code=True)"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": 14,
+   "execution_count": 13,
    "metadata": {},
    "outputs": [
     {
@@ -394,7 +350,7 @@
        " 'history': ['', 'B081TJ8YS3', '', '', '']}"
       ]
      },
-     "execution_count": 14,
+     "execution_count": 13,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -405,7 +361,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 15,
+   "execution_count": 14,
    "metadata": {},
    "outputs": [
     {
@@ -430,7 +386,7 @@
        " 'history': ['B08BZ63GMJ', '', '', '', '']}"
       ]
      },
-     "execution_count": 15,
+     "execution_count": 14,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -441,7 +397,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 18,
+   "execution_count": 15,
    "metadata": {},
    "outputs": [
     {
@@ -470,7 +426,7 @@
        "  '']}"
       ]
      },
-     "execution_count": 18,
+     "execution_count": 15,
      "metadata": {},
      "output_type": "execute_result"
     }
